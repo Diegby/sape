@@ -50,4 +50,25 @@ public class PreferenciaDao implements PreferenciaJdbc{
 		     	new Object[] {nombreEstudiante},new PreferenciaMapper());
 	}
 
+	@Override
+	public void add(Preferencia pref) {
+		this.jdbcTemplate.update(
+                "insert into preferencia(estudiante, proyecto, orden, fechaCambio) values(?, ?, ?, ?)", 
+                pref.getEstudiante(), pref.getIdProyecto(), pref.getOrden(), pref.getFecha());
+	}
+
+	@Override
+	public void delete(Preferencia pref) {
+		this.jdbcTemplate.update(
+                "delete from preferencia where estudiante = ? AND proyecto = ?",
+                pref.getEstudiante(), pref.getIdProyecto());
+	}
+
+	@Override
+	public void update(Preferencia pref) {
+		this.jdbcTemplate.update(
+                "update preferencia set orden = ?, fechaCambio = ? where estudiante = ? AND proyecto = ?", 
+                pref.getOrden(), pref.getFecha(), pref.getEstudiante(), pref.getIdProyecto());
+	}
+
 }

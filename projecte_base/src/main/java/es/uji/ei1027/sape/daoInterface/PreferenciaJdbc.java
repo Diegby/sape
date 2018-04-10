@@ -9,5 +9,8 @@ public interface PreferenciaJdbc {
 	
 	public List<Preferencia> getPreferences(Date fecha, String nombreEstudiante);
 	public List<Preferencia> getAllPreferences(String nombreEstudiante);
+	public void add(Preferencia pref);
+	public void delete(Preferencia pref);
+	public void update(Preferencia pref);
 
 }
